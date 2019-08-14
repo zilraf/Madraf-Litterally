@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "336228308914",
+    "firebase_url": "https://balarunta-2dce4.firebaseio.com",
+    "project_id": "balarunta-2dce4",
+    "storage_bucket": "balarunta-2dce4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336228308914:android:da9df547a5f3186a",
+        "android_client_info": {
+          "package_name": "com.example.madraf.litterally"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "336228308914-a0bqu1nmpmv3lo3fvruoehh4tm4u3h22.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.madraf.litterally",
+            "certificate_hash": "7a21fce5646b230f5d937e77446c01c6ec544d57"
+          }
+        },
+        {
+          "client_id": "336228308914-01sccqbja45jugtd0782lp9gi1aq846k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.madraf.litterally",
+            "certificate_hash": "fffe568db80f7c7b56fcc2861344479cdf3a9aaa"
+          }
+        },
+        {
+          "client_id": "336228308914-gpua49vut1152vh46mfc3ao1prhgtau1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtIknbnpm5kGBhZI7kb_QtoGxN6CveLuc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "336228308914-gpua49vut1152vh46mfc3ao1prhgtau1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

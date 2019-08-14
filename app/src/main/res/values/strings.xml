@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Balarunta</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_bottom_nav">bottomNav</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="map_key" translatable="false">AIzaSyBtIknbnpm5kGBhZI7kb_QtoGxN6CveLuc</string>
+    <string name="text_button_cancel">Cancel</string>
+    <string name="text_button_order">Order</string>
+    <string name="text_price">Price : </string>
+    <string name="hint_from">From</string>
+    <string name="hint_to">To</string>
+
+    <color name="garis">#CCC</color>
+    <string name="title_menu_1">History</string>
+    <string name="title_menu_2">Profil</string>
+    <string name="title_activity_setor">Map</string>
+
+</resources>

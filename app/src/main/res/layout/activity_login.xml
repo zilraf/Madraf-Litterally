@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.madraf.litterally.LoginActivity"
+    android:background="@drawable/wallpaper">
+
+    <ImageView
+        android:id="@+id/logo_app"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:src="@drawable/logotext" />
+
+    <TextView
+        android:text="From nothing, to something!"
+        android:textColor="#FFF"
+        android:id="@+id/textlogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_below="@id/logo_app"
+        android:layout_marginTop="20dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/skiplogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="300dp"
+        android:gravity="center"
+        android:text="Skip"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/adminlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="21dp"
+        android:gravity="center_horizontal"
+        android:text="Admin Login"
+        android:textColor="#FFF"
+        android:textSize="14sp" />
+
+    <ProgressBar
+        android:visibility="invisible"
+        android:id="@+id/progress_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textlogin"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:textColor="#1AAE6D"
+        android:text="LOGIN WITH GOOGLE"
+        android:background="@drawable/round_bg"
+        android:shadowColor="#6F6F6F"
+        android:drawableStart="@drawable/google_login"
+        android:drawableLeft="@drawable/google_login"/>
+
+
+</RelativeLayout>

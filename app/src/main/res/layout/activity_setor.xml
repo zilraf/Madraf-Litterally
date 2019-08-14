@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp"
+    tools:context=".Setor">
+
+    <fragment
+        android:id="@+id/mapfrag"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/littempat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="LitterAlly's Storage"
+        android:textSize="20dp"
+        android:fontFamily="@font/mm"
+        android:textColor="#000"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/litalamat"
+        android:layout_width="match_parent"
+        android:fontFamily="@font/ml"
+        android:textColor="#000"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="0"
+        android:text="Jalan Salam Raya no.20 E, RT.6/RW.6, North Sukabumi, Kebonjeruk, West Jakarta City, Jakarta 11540"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/litdes"
+        android:layout_width="match_parent"
+        android:textSize="18dp"
+        android:fontFamily="@font/ml"
+        android:textColor="#000"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="0"
+        android:text="Visit The Storage or"
+        android:textAlignment="center" />
+
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:background="@drawable/bgwhite"
+            android:elevation="7dp"
+            android:fontFamily="@font/mm"
+            android:text="Order Pickup"
+            android:textColor="#009688" />
+
+</LinearLayout>

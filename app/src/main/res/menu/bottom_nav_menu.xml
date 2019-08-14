@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_pickup"
+        android:icon="@drawable/pin"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/navigation_pet"
+        android:icon="@drawable/logo"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_person_black_24dp"
+        tools:ignore="MenuTitle" />
+
+</menu>
