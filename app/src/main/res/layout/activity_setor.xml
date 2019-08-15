@@ -8,6 +8,7 @@
     android:layout_marginBottom="10dp"
     tools:context=".Setor">
 
+
     <fragment
         android:id="@+id/mapfrag"
         android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -54,18 +55,19 @@
         android:textAlignment="center" />
 
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="0"
-            android:background="@drawable/bgwhite"
-            android:elevation="7dp"
-            android:fontFamily="@font/mm"
-            android:text="Order Pickup"
-            android:textColor="#009688" />
+    <Button
+        android:id="@+id/pickup"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="0"
+        android:background="@drawable/bgwhite"
+        android:elevation="7dp"
+        android:fontFamily="@font/mm"
+        android:text="Request Pickup"
+        android:textColor="#009688" />
+
 
 </LinearLayout>

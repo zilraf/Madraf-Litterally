@@ -20,6 +20,18 @@
     <string name="hint_from">From</string>
     <string name="hint_to">To</string>
 
+    <string-array name="buildingtypes">
+        <item>Choose Building Type</item>
+        <item>House</item>
+        <item>Kos</item>
+        <item>Kantor</item>
+        <item>Sekolah</item>
+        <item>Hotel/Apartment</item>
+        <item>Industri</item>
+        <item>Lain-lain</item>
+    </string-array>
+
+
     <color name="garis">#CCC</color>
     <string name="title_menu_1">History</string>
     <string name="title_menu_2">Profil</string>
