@@ -1,9 +1,6 @@
 package com.example.madraf.litterally;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,18 +10,16 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madraf.litterally.Model.UserTheme;
-import com.example.madraf.litterally.Model.Users;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,7 +35,7 @@ public class MainMenu extends AppCompatActivity{
 
     ImageButton profile;
 
-
+    ImageView imageView;
 
     String getThemeku,email,randomValue;
     String themeku;
@@ -86,16 +81,34 @@ public class MainMenu extends AppCompatActivity{
 
         profile = findViewById(R.id.profile);
 
+
+
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Animation animationv = AnimationUtils.loadAnimation(MainMenu.this,R.anim.rotate);
-                profile.startAnimation(animationv);
+                //Animation animationv = AnimationUtils.loadAnimation(MainMenu.this,R.anim.rotate);
+                profile.setImageResource(R.drawable.ic_arrow_up);
+
+                boolean up;
+                up = true;
+
+                if (!up) {
+                    up = true;
+                    profile.startAnimation(animate(up));
+                } else {
+                    up = false;
+                    profile.startAnimation(animate(up));
+                }
+
+                //profile.animate().rotation(180).start();
                 PopupMenu popupMenu = new PopupMenu(MainMenu.this,profile);
+
                 popupMenu.getMenuInflater().inflate(R.menu.pet_menu, popupMenu.getMenu());
 
                 popupMenu.show();
+
             }
+
         });
 
         icontheme = findViewById(R.id.icontheme);
@@ -133,6 +146,12 @@ public class MainMenu extends AppCompatActivity{
 
     }
 
+    private Animation animate(boolean up) {
+        Animation anim = AnimationUtils.loadAnimation(this, up? R.anim.rotate_up : R.anim.rotate_down);
+        anim.setInterpolator(new LinearInterpolator()); // for smooth animation
+        return anim;
+    }
+
 
     public void balarunimation(){
 
@@ -145,7 +164,7 @@ public class MainMenu extends AppCompatActivity{
         randomValue = String.valueOf((int) (i1));
 
 
-        AnimationSet as = new AnimationSet(false);
+        AnimationSet as = new AnimationSet(true);
 
         switch (randomValue) {
             case "1":

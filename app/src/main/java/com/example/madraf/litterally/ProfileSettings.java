@@ -20,7 +20,7 @@ public class ProfileSettings extends AppCompatActivity {
 
     Button btnsave2, logout;
     /*View holderbg, dynamicbg;*/
-    TextView username;
+    TextView username,displayname;
     ImageView userphoto;
 
     FirebaseAuth mAuth;
@@ -36,6 +36,7 @@ public class ProfileSettings extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        displayname = findViewById(R.id.nameuser);
         username = findViewById(R.id.uname);
         userphoto = findViewById(R.id.userphoto);
 
@@ -78,11 +79,31 @@ public class ProfileSettings extends AppCompatActivity {
         if (acct != null) {
             String photo = String.valueOf(user.getPhotoUrl());
             String email = user.getEmail();
+            String name = user.getDisplayName();
 
             //Picasso.with(ProfileSettings.this).load(photo).into(userphoto);
 
+
+
+            //Drawable d = getResources().getDrawable(android.R.drawable.ic_dialog_email);
+            //ImageView image = (ImageView)findViewById(R.id.image);
+            //image.setImageDrawable(d);
+
             Picasso.get().load(photo).into(userphoto);
+
+            //String uri="@drawable/" + photo;
+            //userphoto.setImageResource(getResources().getIdentifier(uri, null, getPackageName()));
+
+            //userphoto.getDrawable();
+            //Drawable img1 = userphoto.getDrawable();
+
+            //Bitmap bitmap1 = BitmapFactory.decodeResource(this.getResources(),R.drawable.img1);
+            //Bitmap circularBitmap1 = RoundedImage.getRoundedCornerBitmap(bitmap1, 100);
+            //userphoto.setImageBitmap(circularBitmap1);
+
+            displayname.setText(name);
             username.setText(email);
+
         }
 
 
