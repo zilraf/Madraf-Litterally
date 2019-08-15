@@ -268,15 +268,14 @@ public class Personalise extends AppCompatActivity {
                         }
                     });
 
-                /*}else if((dataSnapshot.child("UserTheme").child(email).exists())){
+                }else if((dataSnapshot.child("UserTheme").child(themeku).exists())){
                     Intent intent = new Intent(Personalise.this,MainMenu.class);
-                    startActivity(intent);*/
+                    startActivity(intent);
                 }
                 else{
                     loadingBar.dismiss();
-                    Toast.makeText(Personalise.this, "Loading..", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Personalise.this, "Theme failed..", Toast.LENGTH_SHORT).show();
 
-                    saveTheme();
                 }
             }
 

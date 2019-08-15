@@ -1,6 +1,9 @@
 package com.example.madraf.litterally;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -10,14 +13,18 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.madraf.litterally.Model.UserTheme;
+import com.example.madraf.litterally.Model.Users;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,13 +40,18 @@ public class MainMenu extends AppCompatActivity{
 
     ImageButton profile;
 
+
+
     String getThemeku,email,randomValue;
-    String themeku = "";
+    String themeku;
+    String themelisten;
     String SHARED_PREFS = "codeTheme";
 
     View bgview;
     ImageView icontheme,bayangan;
     FirebaseAuth mAuth;
+
+    private String parentdBNamet = ("UserTheme");
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -95,10 +107,11 @@ public class MainMenu extends AppCompatActivity{
             email = user.getEmail().toString();
             email = email.substring(0, email.indexOf("@"));
 
-            //AllowAccesstoAccount();
-            getThemeku = ("green");
+            AllowAccesstoAccount(email, themeku);
             changeOurTheme();
         }else{
+            Toast.makeText(MainMenu.this, "Theme " + themeku + "is null", Toast.LENGTH_SHORT).show();
+            getThemeku = ("green");
             changeOurTheme();
         }
 
@@ -119,6 +132,7 @@ public class MainMenu extends AppCompatActivity{
 
 
     }
+
 
     public void balarunimation(){
 
@@ -173,27 +187,49 @@ public class MainMenu extends AppCompatActivity{
     }
 
 
-    private void AllowAccesstoAccount() {
-        DatabaseReference themeRef;
-        themeRef = FirebaseDatabase.getInstance().getReference();
+    public void AllowAccesstoAccount(final String email, final String themeku) {
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
 
 
-        themeRef.addValueEventListener(new ValueEventListener() {
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                themeku = String.valueOf(dataSnapshot.child("themeku").getValue());
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child(parentdBNamet).child(email).exists()){
+
+                    UserTheme userData = dataSnapshot.child(parentdBNamet).child(email).getValue(UserTheme.class);
+
+                    if(userData.getEmail().equals(email)){
+                        if(dataSnapshot.child(parentdBNamet).child(themeku).exists()){
+                            Toast.makeText(MainMenu.this, "Theme not Exist", Toast.LENGTH_SHORT).show();
+
+                        }else {
+                            userData.getThemeku().toString();
+                            themelisten = userData.getThemeku();
+                            Toast.makeText(MainMenu.this, "Theme" + themeku + "Applied", Toast.LENGTH_SHORT).show();
+                        }
 
 
+                }else{
+                    Toast.makeText(MainMenu.this, "Theme with this " + email + " do not exists", Toast.LENGTH_SHORT).show();
+
+                }
+                }
             }
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
 
+
     public void changeOurTheme(){
 
-        //getThemeku = (""+themeku);
+        //getThemeku = themelisten;
+        getThemeku = ("" + themelisten);
+
 
         if(getThemeku.equals("blue")) {
             icontheme.setImageResource(R.drawable.icmob);

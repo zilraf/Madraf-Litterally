@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AdminAddNewProduct"></activity>
+        <activity android:name=".RequestPickup"></activity>
+        <activity android:name=".AdminAddNewProduct" />
         <activity android:name=".AdminCategoryActivity" />
         <activity android:name=".RegisterForm" />
         <activity android:name=".LoginForm" />

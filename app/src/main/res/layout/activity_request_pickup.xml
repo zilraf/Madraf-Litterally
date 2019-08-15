@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="475dp"
+    android:background="#FFFFFF"
+    android:padding="5dp"
+    android:layout_gravity="center">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/alamat"
+            android:textSize="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/round_bg"
+            android:hint="Enter Address"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="40dp"/>
+
+
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_below="@id/alamat"
+            android:layout_marginTop="10dp"
+            android:layout_alignEnd="@+id/alamat">
+
+        </Spinner>
+
+        <Button
+            android:id="@+id/registerbutton"
+            android:text="Submit Request"
+            android:textColor="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/spinner1"
+            android:layout_marginTop="40dp"
+            android:padding="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/round_bg"
+            android:backgroundTint="@color/colorPrimary"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

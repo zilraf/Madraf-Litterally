@@ -5,6 +5,12 @@
         android:color="#E4F5FD"
         />
 
+    <gradient
+    android:startColor="#A2FFF1"
+    android:endColor="#6FB9FA"
+    android:angle="90"
+    />
+
     <corners
         android:radius="40dp"
         />
