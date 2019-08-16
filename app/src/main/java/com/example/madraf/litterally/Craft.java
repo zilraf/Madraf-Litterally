@@ -9,7 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
-//Implementing the interface OnTabSelectedListener to our MainActivity
+//Implementing the interface OnTabSelectedListener to our GameActivity
 //This interface would help in swiping views
 public class Craft extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
 

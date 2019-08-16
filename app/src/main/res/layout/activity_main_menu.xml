@@ -82,5 +82,15 @@
         app:itemIconTint="#000000"
         app:menu="@menu/bottom_nav_menu" />
 
+    <Button
+        android:id="@+id/playgame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
