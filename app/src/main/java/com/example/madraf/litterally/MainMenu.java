@@ -11,7 +11,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -35,7 +34,7 @@ import java.util.Random;
 public class MainMenu extends AppCompatActivity{
 
     ImageButton profile;
-    Button playgame;
+    ImageButton playgame;
 
     ImageView imageView;
 
