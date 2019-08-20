@@ -196,7 +196,7 @@ public class AdminAddNewProduct extends AppCompatActivity {
                 }else {
                     loadingBar.dismiss();
                     String message = task.getException().toString();
-                    Toast.makeText(AdminAddNewProduct.this, "Error: " +message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminAddNewProduct.this, "Error: " + message, Toast.LENGTH_SHORT).show();
                 }
             }
         });
