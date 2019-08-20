@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/navigation_pet"
-        android:icon="@drawable/logo"
+        android:icon="@drawable/logolit"
         tools:ignore="MenuTitle" />
 
     <item
