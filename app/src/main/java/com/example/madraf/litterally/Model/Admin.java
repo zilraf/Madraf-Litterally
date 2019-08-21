@@ -1,14 +1,14 @@
 package com.example.madraf.litterally.Model;
 
-public class Users {
+public class Admin {
     private String username, password;
 
-    public Users()
+    public Admin()
     {
 
     }
 
-    public Users(String username, String password){
+    public Admin(String username, String password){
         this.username = username;
         this.password = password;
     }

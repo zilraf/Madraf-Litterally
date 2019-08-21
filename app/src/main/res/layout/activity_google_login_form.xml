@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminLoginForm"
+    tools:context=".GoogleLoginForm"
     android:background="@drawable/wallpaper">
 
     <EditText
-        android:id="@+id/usernamelogin"
+        android:id="@+id/usernamelogingoogle"
         android:hint="Enter Username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,27 +20,26 @@
         android:background="@drawable/round_bg"/>
 
     <EditText
-        android:id="@+id/passwordlogin"
+        android:id="@+id/numberlogingoogle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/usernamelogin"
+        android:layout_below="@+id/usernamelogingoogle"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/round_bg"
-        android:hint="Enter Password"
-        android:inputType="textPassword"
+        android:hint="Enter Phone Number"
         android:padding="20dp" />
 
     <Button
-        android:id="@+id/loginbutton"
-        android:text="LOGIN"
+        android:id="@+id/continue_btn"
+        android:text="CONTINUE"
         android:textColor="#FFF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/passwordlogin"
+        android:layout_below="@+id/numberlogingoogle"
         android:layout_marginTop="40dp"
         android:padding="20dp"
         android:layout_marginLeft="30dp"

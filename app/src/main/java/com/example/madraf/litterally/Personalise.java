@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,9 +33,12 @@ public class Personalise extends AppCompatActivity {
 
     Button btngreen, btnblue, btnred, btnsave;
     View holderbg, dynamicbg;
+    EditText usernamep;
+    String username;
 
     String getThemeku;
     String themeku = "";
+    String phone;
 
     private ProgressDialog loadingBar;
 
@@ -50,6 +54,7 @@ public class Personalise extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         loadingBar = new ProgressDialog(this);
+        usernamep = findViewById(R.id.usernamep);
 
 
 
@@ -223,8 +228,8 @@ public class Personalise extends AppCompatActivity {
         final FirebaseUser user_on = mAuth.getCurrentUser();
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if (acct != null) {
-            String email = user.getEmail().toString();
-            email = email.substring(0, email.indexOf("@"));
+            //String email = user.getEmail().toString();
+            //email = email.substring(0, email.indexOf("@"));
 
             loadingBar.setTitle("Saving Theme..");
             loadingBar.setMessage("Please wait, while we apply the theme..");
@@ -233,25 +238,28 @@ public class Personalise extends AppCompatActivity {
 
             SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
             themeku = sharedPreferences.getString(themeku, "");
-            ValidateUser(email, themeku);
+            SaveThemeU(username,themeku);
         }
 
 
     }
 
-    private void ValidateUser(final String email, final String themeku) {
+    private void SaveThemeU(final String username,final String themeku) {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
+
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        getThemeku = sharedPreferences.getString(themeku, "");
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(!(dataSnapshot.child("UserTheme").child(email).exists())) {
+                if(!(dataSnapshot.child("UserInfo").child(username).exists())) {
                     HashMap<String, Object> userdataMap = new HashMap<>();
-                    userdataMap.put("email", email);
-                    userdataMap.put("themeku", themeku);
+                    userdataMap.put("username",usernamep);
+                    userdataMap.put("themeku", getThemeku);
 
-                    RootRef.child("UserTheme").updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    RootRef.child("UTheme").child(username).updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
@@ -262,20 +270,18 @@ public class Personalise extends AppCompatActivity {
                             }else{
                                 loadingBar.dismiss();
                                 Toast.makeText(Personalise.this, "Network Error ", Toast.LENGTH_SHORT).show();
-                                Intent a = new Intent(Personalise.this,LoginActivity.class);
                             }
 
                         }
                     });
 
-                }else if((dataSnapshot.child("UserTheme").child(themeku).exists())){
+                }else{
+                    Toast.makeText(Personalise.this, "This " + username + " already exists", Toast.LENGTH_SHORT).show();
+                    loadingBar.dismiss();
+                    Toast.makeText(Personalise.this, "Please try again using another username", Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(Personalise.this,MainMenu.class);
                     startActivity(intent);
-                }
-                else{
-                    loadingBar.dismiss();
-                    Toast.makeText(Personalise.this, "Theme failed..", Toast.LENGTH_SHORT).show();
-
                 }
             }
 

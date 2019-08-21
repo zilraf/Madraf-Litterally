@@ -1,6 +1,7 @@
 package com.example.madraf.litterally;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,7 +20,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.madraf.litterally.Model.UserTheme;
+import com.example.madraf.litterally.Model.UTheme;
+import com.example.madraf.litterally.Model.UserInfo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,7 +40,7 @@ public class MainMenu extends AppCompatActivity{
 
     ImageView imageView;
 
-    String getThemeku,email,randomValue;
+    String getTheme,email,randomValue;
     String themeku;
     String themelisten;
     String SHARED_PREFS = "codeTheme";
@@ -47,7 +49,7 @@ public class MainMenu extends AppCompatActivity{
     ImageView icontheme,bayangan;
     FirebaseAuth mAuth;
 
-    private String parentdBNamet = ("UserTheme");
+    private String parentdBNamet = ("UTheme");
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -128,14 +130,13 @@ public class MainMenu extends AppCompatActivity{
 
         if(mAuth.getCurrentUser()!= null){
             FirebaseUser user = mAuth.getCurrentUser();
-            email = user.getEmail().toString();
-            email = email.substring(0, email.indexOf("@"));
+            //email = user.getEmail().toString();
+            //email = email.substring(0, email.indexOf("@"));
 
-            AllowAccesstoAccount(email, themeku);
-            changeOurTheme();
+            AllowAccesstoAccount(themeku);
         }else{
             Toast.makeText(MainMenu.this, "Theme " + themeku + "is null", Toast.LENGTH_SHORT).show();
-            getThemeku = ("green");
+            getTheme = ("green");
             changeOurTheme();
         }
 
@@ -217,33 +218,28 @@ public class MainMenu extends AppCompatActivity{
     }
 
 
-    public void AllowAccesstoAccount(final String email, final String themeku) {
+    public void AllowAccesstoAccount(final String themeku) {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
 
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child(parentdBNamet).child(email).exists()){
+                if (dataSnapshot.child(parentdBNamet).child(themeku).exists()){
 
-                    UserTheme userData = dataSnapshot.child(parentdBNamet).child(email).getValue(UserTheme.class);
+                    getTheme = sharedPreferences.getString(themeku, "");
 
-                    if(userData.getEmail().equals(email)){
-                        if(dataSnapshot.child(parentdBNamet).child(themeku).exists()){
-                            Toast.makeText(MainMenu.this, "Theme not Exist", Toast.LENGTH_SHORT).show();
+                    UTheme userData = dataSnapshot.child(parentdBNamet).child(themeku).getValue(UTheme.class);
 
-                        }else {
-                            userData.getThemeku().toString();
-                            themelisten = userData.getThemeku();
-                            Toast.makeText(MainMenu.this, "Theme" + themeku + "Applied", Toast.LENGTH_SHORT).show();
-                        }
+                    changeOurTheme();
 
+                    themelisten = userData.getThemeku();
+                    Toast.makeText(MainMenu.this, "Theme" + themeku + "Applied", Toast.LENGTH_SHORT).show();
 
-                }else{
-                    Toast.makeText(MainMenu.this, "Theme with this " + email + " do not exists", Toast.LENGTH_SHORT).show();
+                    String themeu = dataSnapshot.child(themeku).getValue().toString();
 
-                }
                 }
             }
 
@@ -257,24 +253,21 @@ public class MainMenu extends AppCompatActivity{
 
     public void changeOurTheme(){
 
-        //getThemeku = themelisten;
-        getThemeku = ("" + themelisten);
 
-
-        if(getThemeku.equals("blue")) {
+        if(getTheme.equals("blue")) {
             icontheme.setImageResource(R.drawable.icmob);
             bgview.setBackgroundResource(R.drawable.bgblue);
             bgview.setScaleY(3);
             bgview.setScaleX(3);
 
         }
-        else if(getThemeku.equals("green")) {
+        else if(getTheme.equals("green")) {
             icontheme.setImageResource(R.drawable.icmog);
             bgview.setBackgroundResource(R.drawable.bggreen);
             bgview.setScaleY(3);
             bgview.setScaleX(3);
         }
-        else if(getThemeku.equals("red")) {
+        else if(getTheme.equals("red")) {
             icontheme.setImageResource(R.drawable.icmor);
             bgview.setBackgroundResource(R.drawable.bgred);
             bgview.setScaleY(3);

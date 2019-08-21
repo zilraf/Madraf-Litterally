@@ -12,20 +12,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.madraf.litterally.Model.Users;
+import com.example.madraf.litterally.Model.Admin;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class LoginForm extends AppCompatActivity {
+public class AdminLoginForm extends AppCompatActivity {
 
     Button loginbutton;
     private EditText usernamelogin,passwordlogin;
     private ProgressDialog loadingBar;
 
-    private String parentDbname = "Users" ;
+    private String parentDbname = "Admin" ;
 
 
     @Override
@@ -76,25 +76,25 @@ public class LoginForm extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(parentDbname).child(username).exists()){
 
-                    Users userData = dataSnapshot.child(parentDbname).child(username).getValue(Users.class);
+                    Admin userData = dataSnapshot.child(parentDbname).child(username).getValue(Admin.class);
 
                     if(userData.getUsername().equals(username)){
                         if(userData.getPassword().equals(password)){
-                            Toast.makeText(LoginForm.this, "Logged In", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdminLoginForm.this, "Logged In", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
-                            Intent a = new Intent(LoginForm.this, AdminCategoryActivity.class);
+                            Intent a = new Intent(AdminLoginForm.this, AdminCategoryActivity.class);
                             startActivity(a);
                         }else {
                             loadingBar.dismiss();
-                            Toast.makeText(LoginForm.this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdminLoginForm.this, "Wrong Password", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                 }else{
-                    Toast.makeText(LoginForm.this, "Account with this " + username + " do not exists", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminLoginForm.this, "Account with this " + username + " do not exists", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
-                    Toast.makeText(LoginForm.this, "You are not admin", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminLoginForm.this, "You are not admin", Toast.LENGTH_SHORT).show();
 
                 }
             }

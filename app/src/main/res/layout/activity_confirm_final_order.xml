@@ -37,7 +37,7 @@
         android:layout_below="@+id/shippment_name"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"
-        android:inputType="number"
+        android:inputType="phone"
         android:layout_marginRight="20dp"
         android:hint="your Phone Number"
         />

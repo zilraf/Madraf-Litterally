@@ -37,4 +37,8 @@
     <string name="title_menu_2">Profil</string>
     <string name="title_activity_setor">Map</string>
 
+    <string name="title_activity_google_login_form">GoogleLoginForm</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
 </resources>

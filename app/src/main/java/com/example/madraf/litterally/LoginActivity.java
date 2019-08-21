@@ -1,8 +1,8 @@
 package com.example.madraf.litterally;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,8 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.madraf.litterally.Model.UserTheme;
-import com.example.madraf.litterally.Model.Users;
+import com.example.madraf.litterally.Model.UserInfo;
 import com.example.madraf.litterally.Prevalent.Prevalent;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -33,20 +32,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static com.example.madraf.litterally.Prevalent.Prevalent.UserPasswordKey;
-import static com.example.madraf.litterally.Prevalent.Prevalent.UserUsernameKey;
-
 public class LoginActivity extends AppCompatActivity {
 
     static final int RC_SIGN_IN = 1;
-    String email,themeku;
+    String number,name;
     FirebaseAuth mAuth;
     Button btn_login;
     TextView text,skiplogin, adminlogin;
     ImageView image;
     ProgressBar progressBar;
     GoogleSignInClient mGoogleSignInClient;
+    String emailholder = "",nameholder = "";
     //private String parentDbname = "Admin";
+
+    String SHARED_PREFS = "codeUser";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
         adminlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent a = new Intent(LoginActivity.this, LoginForm.class);
+                Intent a = new Intent(LoginActivity.this, AdminLoginForm.class);
                 startActivity(a);
             }
         });
@@ -112,11 +111,11 @@ public class LoginActivity extends AppCompatActivity {
 
         btn_login.setOnClickListener(v -> SignInGoogle());
 
-        if (mAuth.getCurrentUser() != null) {
+        /*if (mAuth.getCurrentUser() != null) {
             FirebaseUser user = mAuth.getCurrentUser();
-            AllowAccesstoAccount(email, themeku);
+            AllowAccesstoAccount(email, name);
             updateUI(user);
-        }
+        }*/
     }
 
 
@@ -138,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d("TAG", "signInWithCredential:success");
 
                         FirebaseUser user = mAuth.getCurrentUser();
+
                         updateUI(user);
                     } else {
                         progressBar.setVisibility(View.INVISIBLE);
@@ -175,39 +175,4 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void AllowAccesstoAccount(final String email, final String themeku) {
-
-        final DatabaseReference RootRef;
-        RootRef = FirebaseDatabase.getInstance().getReference();
-
-        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("UserTheme").exists()){
-
-                    UserTheme usersData = dataSnapshot.child("UserTheme").child(email).getValue(UserTheme.class);
-                    usersData.getEmail();
-                    usersData.getThemeku();
-
-                    Prevalent.currentOnlineUser = usersData;
-
-                    Intent a = new Intent(LoginActivity.this,MainMenu.class);
-                    startActivity(a);
-
-
-                }else{
-
-                    Toast.makeText(LoginActivity.this, "Load Theme Failed", Toast.LENGTH_SHORT).show();
-                    Intent a = new Intent(LoginActivity.this,Personalise.class);
-                    startActivity(a);
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 }

@@ -97,7 +97,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity
 
         final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference()
                 .child("Orders")
-                .child(Prevalent.currentOnlineUser.getEmail());
+                .child(Prevalent.currentOnlineUser.getPhone());
 
         HashMap<String, Object> ordersMap = new HashMap<>();
         ordersMap.put("totalAmount", totalAmount);
@@ -118,7 +118,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity
                     FirebaseDatabase.getInstance().getReference()
                             .child("Cart List")
                             .child("User View")
-                            .child(Prevalent.currentOnlineUser.getEmail())
+                            .child(Prevalent.currentOnlineUser.getPhone())
                             .removeValue()
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

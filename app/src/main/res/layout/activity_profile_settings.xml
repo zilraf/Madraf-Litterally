@@ -54,7 +54,7 @@
             android:paddingEnd="20dp"
             android:paddingBottom="15dp"
             android:paddingStart="50dp"
-            android:text="email"/>
+            android:text="phone"/>
 
         <TextView
             android:id="@+id/ulevel"
