@@ -1,6 +1,5 @@
 package com.example.madraf.litterally;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,7 +19,6 @@ import com.example.madraf.litterally.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -53,17 +51,6 @@ public class Recycle extends AppCompatActivity {
         toolbarcollaps = findViewById(R.id.toolbarcollaps);
         setSupportActionBar(toolbarcollaps);
         setTitle("");
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-
-                    Intent intent = new Intent(Recycle.this, CartActivity.class);
-                    startActivity(intent);
-            }
-        });
 
         coltb = findViewById(R.id.coltb);
         btnconvert = findViewById(R.id.btnconvert);
@@ -117,17 +104,8 @@ public class Recycle extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
                 holder.txtproductName.setText(model.getPname());
                 holder.txtproductDescription.setText(model.getDescription());
-                holder.txtproductPrice.setText("Price: Rp." + model.getPrice() + ",-");
+                holder.txtproductPrice.setText("Price: " + model.getPrice() + ",-");
                 Picasso.get().load(model.getImage()).into(holder.imageView);
-
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                            Intent intent = new Intent(Recycle.this, ProductDetailsActivity.class);
-                            intent.putExtra("pid", model.getPid());
-                            startActivity(intent);
-                        }
-                    });
             }
 
             @NonNull

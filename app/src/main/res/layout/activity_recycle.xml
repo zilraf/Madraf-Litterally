@@ -148,14 +148,6 @@
             android:textSize="24dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="5dp"
-            android:src="@drawable/ic_shopping_cart_black_24dp" />
-
 
         <include layout="@layout/content_recycle" />
 
