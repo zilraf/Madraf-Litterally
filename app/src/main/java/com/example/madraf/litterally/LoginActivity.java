@@ -2,6 +2,7 @@ package com.example.madraf.litterally;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.madraf.litterally.Model.UserTheme;
+import com.example.madraf.litterally.Model.Users;
+import com.example.madraf.litterally.Prevalent.Prevalent;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -28,6 +32,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import static com.example.madraf.litterally.Prevalent.Prevalent.UserPasswordKey;
+import static com.example.madraf.litterally.Prevalent.Prevalent.UserUsernameKey;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -61,6 +68,19 @@ public class LoginActivity extends AppCompatActivity {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+
+        /*if (UserUsernameKey != "" && UserPasswordKey != "")
+        {
+            if (!TextUtils.isEmpty(UserUsernameKey)  &&  !TextUtils.isEmpty(UserPasswordKey))
+            {
+                AllowAccess(UserUsernameKey, UserPasswordKey);
+
+                loadingBar.setTitle("Already Logged in");
+                loadingBar.setMessage("Please wait.....");
+                loadingBar.setCanceledOnTouchOutside(false);
+                loadingBar.show();
+            }
+        }*/
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
@@ -98,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
             updateUI(user);
         }
     }
+
 
     public void SignInGoogle() {
         progressBar.setVisibility(View.VISIBLE);
@@ -156,8 +177,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void AllowAccesstoAccount(final String email, final String themeku) {
 
-        FirebaseUser user = mAuth.getCurrentUser();
-
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -165,6 +184,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("UserTheme").exists()){
+
+                    UserTheme usersData = dataSnapshot.child("UserTheme").child(email).getValue(UserTheme.class);
+                    usersData.getEmail();
+                    usersData.getThemeku();
+
+                    Prevalent.currentOnlineUser = usersData;
 
                     Intent a = new Intent(LoginActivity.this,MainMenu.class);
                     startActivity(a);
