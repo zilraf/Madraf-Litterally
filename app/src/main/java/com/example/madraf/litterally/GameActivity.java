@@ -185,7 +185,7 @@ public class GameActivity extends AppCompatActivity {
 
         box.setX(boxX);
 
-        scoreLabel.setText(" " + score);
+        scoreLabel.setText("Score : " + score);
         /*if (score==50){
             boxWidth = boxWidth * 110 / 100;
             boxHeight = boxHeight * 110 / 100;
