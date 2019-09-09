@@ -17,11 +17,11 @@
             android:fitsSystemWindows="true">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:layout_width="match_parent"
-                android:layout_height="600dp"
                 android:id="@+id/coltb"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                android:background="@color/colorAccent">
+                android:layout_width="match_parent"
+                android:layout_height="800dp"
+                android:background="@color/colorAccent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -129,9 +129,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="5dp"
-                    android:tint="#FFF"
                     android:scaleX="2"
                     android:scaleY="2"
+                    android:tint="#FFF"
                     app:srcCompat="@drawable/ic_keyboard_arrow_down_black_24dp" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>

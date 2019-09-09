@@ -65,12 +65,26 @@
         android:background="@drawable/round_bg"
         />
 
+    <EditText
+        android:id="@+id/product_material"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_price"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="6dp"
+        android:padding="20dp"
+        android:hint="Product Material..."
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:background="@drawable/round_bg"
+        />
+
 
     <Button
         android:id="@+id/add_new_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/product_price"
+        android:layout_below="@+id/product_material"
         android:text="Add Product"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"

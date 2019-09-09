@@ -32,10 +32,10 @@ import java.util.HashMap;
 
 public class AdminAddNewProduct extends AppCompatActivity {
 
-    private String CategoryName, Desc, Price, Pname, saveCurrentDate, saveCurrentTime;
+    private String CategoryName, Desc, Price, Pname, Mat, saveCurrentDate, saveCurrentTime;
     private Button AddNewProductButton;
     private ImageView InputProductImage;
-    private EditText InputProductName, InputProductDesc, InputProductPrice;
+    private EditText InputProductName, InputProductDesc, InputProductPrice, InputProductMaterial;
     private static final int GalleryPick = 1;
     private Uri ImageUri;
     private String productRandomKey, downloadImageUrl;
@@ -59,6 +59,7 @@ public class AdminAddNewProduct extends AppCompatActivity {
         InputProductImage = findViewById(R.id.select_product_image);
         InputProductName = findViewById(R.id.product_name);
         InputProductDesc = findViewById(R.id.product_description);
+        InputProductMaterial = findViewById(R.id.product_material);
         InputProductPrice = findViewById(R.id.product_price);
 
         loadingBar = new ProgressDialog(this);
@@ -98,6 +99,7 @@ public class AdminAddNewProduct extends AppCompatActivity {
 
     private void ValidateProductData() {
         Desc = InputProductDesc.getText().toString();
+        Mat = InputProductMaterial.getText().toString();
         Pname = InputProductName.getText().toString();
         Price = InputProductPrice.getText().toString();
 
@@ -105,6 +107,8 @@ public class AdminAddNewProduct extends AppCompatActivity {
             Toast.makeText(this, "Product image is mandatory..", Toast.LENGTH_SHORT).show();
         }else if (TextUtils.isEmpty(Desc)){
             Toast.makeText(this, "Please write product description..", Toast.LENGTH_SHORT).show();
+        }else if (TextUtils.isEmpty(Mat)){
+            Toast.makeText(this, "Please write product material..", Toast.LENGTH_SHORT).show();
         }else if (TextUtils.isEmpty(Pname)){
             Toast.makeText(this, "Please write product name..", Toast.LENGTH_SHORT).show();
         }else if (TextUtils.isEmpty(Price)){
@@ -179,6 +183,7 @@ public class AdminAddNewProduct extends AppCompatActivity {
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);
         productMap.put("description", Desc);
+        productMap.put("material", Mat);
         productMap.put("image", downloadImageUrl);
         productMap.put("category", CategoryName);
         productMap.put("price", Price);
